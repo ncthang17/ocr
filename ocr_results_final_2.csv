@@ -1,0 +1,7 @@
+﻿Image,Lang,Tesseract_Acc,Tesseract_Sec,Tesseract_Output,EasyOCR_Acc,EasyOCR_Sec,EasyOCR_Output,PaddleOCR_Acc,PaddleOCR_Sec,PaddleOCR_Output
+english_typed.png,eng,100.0,0.22,The quick brown fox jumps over the lazy dog.,88.64,3.24,The quick brown fox jumps over the dog: lazy,16.9,7.19,n a o t o e e e e e e i e e
+korean_typed.png,kor,100.0,0.19,빠른 갈색 여우가 게으른 개를 뛰어넘습니다.,91.67,11.38,빠른 갈색 여우가 게으른 개틀 뛰어넘습니다:,19.61,7.57,n a o t o e e e e e e i e e
+vietnamese_typed.png,vie,100.0,0.25,Con cáo nâu nhanh nhẹn nhảy qua con chó lƯời biếng.,98.04,17.34,Con cáo nâu nhanh nhẹn nhảy qua con chó lười biếng:,33.33,10.45,n a o t o e e e e e e i e e
+english_handwritten.png,eng,45.45,0.25,Quack. yawn Fos eee eS,13.56,1.2,bnnv_fos j Auck,16.9,3.37,n a o t o e e e e e e i e e
+korean_handwritten.png,kor,53.85,0.16,.… 빠른 감색 의우가 기은 개즐 99어님습3다  _,82.61,1.23,6른   갈색 여우가   게이문 개   뛰어넘습니다,19.61,2.27,n a o t o e e e e e e i e e
+vietnamese_handwritten.png,vie,16.47,0.22,"—————~ ~ P ˆ : _""ĐNG ST E: G212 si",15.79,1.43,{2nv_cac_ Iaw aBoak bieaq,33.33,2.66,n a o t o e e e e e e i e e
