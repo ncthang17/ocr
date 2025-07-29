@@ -110,7 +110,7 @@ ocr-comparison-benchmark/
   - 다양한 OCR 엔진 사용
   - 전처리 기술 튜닝
 
---
+---
 
 # 🧠 OCR Benchmark: Tesseract vs EasyOCR vs PaddleOCR
 
