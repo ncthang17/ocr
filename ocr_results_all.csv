@@ -1,0 +1,9 @@
+﻿Image,Lang,Tesseract_Acc,Tesseract_Sec,Tesseract_Output,EasyOCR_Acc,EasyOCR_Sec,EasyOCR_Output,PaddleOCR_Acc,PaddleOCR_Sec,PaddleOCR_Output,Doctr_Acc,Doctr_Sec,Doctr_Output,TrOCR_Acc,TrOCR_Sec,TrOCR_Output
+english_typed.png,eng,100.0,0.21,The quick brown fox jumps over the lazy dog.,88.64,3.13,The quick brown fox jumps over the dog: lazy,16.9,7.18,n a o t o e e e e e e i e e,100.0,4.14,The quick brown fox jumps over the lazy dog.,96.55,16.58,THE QUICK BROWN FOX JUMPS OVER THE IAY DOG.
+korean_typed.png,kor,100.0,0.22,빠른 갈색 여우가 게으른 개를 뛰어넘습니다.,91.67,17.84,빠른 갈색 여우가 게으른 개틀 뛰어넘습니다:,19.61,7.52,n a o t o e e e e e e i e e,18.18,4.1,HUH iE ZAH 097 HOE 7HE HOLBELEL,24.0,6.37,WE 24 OFF AKE AND HOUSEUN.
+vietnamese_typed.png,vie,100.0,0.19,Con cáo nâu nhanh nhẹn nhảy qua con chó lƯời biếng.,98.04,19.02,Con cáo nâu nhanh nhẹn nhảy qua con chó lười biếng:,33.33,10.43,n a o t o e e e e e e i e e,84.31,4.32,Con câo nau nhanh nhen nhây qua con cho ludi bieng.,27.72,9.9,CASH SAND REFUND WHEN THEY FACE AND THE AGAIN USNG
+english_handwritten.png,eng,45.45,0.22,Quack. yawn Fos eee eS,13.56,1.33,bnnv_fos j Auck,16.9,4.89,n a o t o e e e e e e i e e,89.66,6.6,Ghe quick brawn Tox jumps OVev the lazy dog,96.7,18.04,the quick brown fox jumps over the lazy dog ...
+korean_handwritten.png,kor,53.85,0.16,.… 빠른 감색 의우가 기은 개즐 99어님습3다  _,82.61,2.49,6른   갈색 여우가   게이문 개   뛰어넘습니다,19.61,3.68,n a o t o e e e e e e i e e,18.52,6.89,"DUE
+Tthy 097 7HOLZ 2UE 40544ch",19.23,8.46,one by dirt and the flagback
+vietnamese_handwritten.png,vie,16.47,0.23,"—————~ ~ P ˆ : _""ĐNG ST E: G212 si",15.79,2.9,{2nv_cac_ Iaw aBoak bieaq,33.33,4.62,n a o t o e e e e e e i e e,58.0,6.69,"Kon cao maw aharh nhen nhay qua COW cho luoi
+beng",12.61,8.82,Michigan can make a beach where a half space can also differ
