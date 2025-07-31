@@ -1,6 +1,6 @@
 # 🧠 OCR 벤치마크: Tesseract vs EasyOCR vs PaddleOCR
 
-이 프로젝트는 세 가지 OCR 라이브러리인 **Tesseract**, **EasyOCR**, **PaddleOCR**를 **영어**, **한국어**, **베트남어** 세 언어와 **타이핑** 및 **손글씨** 두 가지 입력 유형에서 벤치마크합니다.
+이 프로젝트는 다섯 가지 OCR 라이브러리인 **Tesseract**, **EasyOCR**, **PaddleOCR**, **Doctr**, **TrOCR**를 **영어**, **한국어**, **베트남어** 세 언어와 **타이핑** 및 **손글씨** 두 가지 입력 유형에서 벤치마크합니다.
 
 ---
 
@@ -22,7 +22,7 @@
 다음 파이썬 패키지를 설치하세요:
 
 ```bash
-pip install pytesseract easyocr paddleocr opencv-python pandas tabulate
+pip install pytesseract easyocr paddleocr doctr transformers opencv-python pandas tabulate
 ```
 
 그리고 Tesseract OCR을 수동으로 설치하세요:
@@ -42,10 +42,10 @@ pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tessera
 ### 📋 파일 구조
 
 ```
-ocr-comparison-benchmark/
+ocr/
 ├── images/                  # 입력 테스트 이미지
-├── ocr_results_final_2.csv  # 출력 결과 파일
-├── ocr_test_final_2.py      # 메인 벤치마크 스크립트
+├── ocr_results_all.csv  # 출력 결과 파일
+├── ocr_test_final_4.py      # 메인 벤치마크 스크립트
 └── README.md                # 이 설명 파일
 ```
 
@@ -61,6 +61,8 @@ ocr-comparison-benchmark/
    - Tesseract (pytesseract 이용)
    - EasyOCR (`easyocr.Reader` 이용)
    - PaddleOCR (`PaddleOCR` 이용)
+   - Doctr (`doctr.models.ocr_predictor` 이용)
+   - TrOCR (Microsoft HuggingFace 모델)
 
 3. **평가**:
 
@@ -69,7 +71,7 @@ ocr-comparison-benchmark/
 
 4. **결과 출력**:
 
-   - 결과를 `ocr_results_final_2.csv` 파일에 저장
+   - 결과를 `ocr_results_all.csv` 파일에 저장
    - `tabulate` 설치 시, 결과 표로 출력 가능
 
 ---
@@ -78,27 +80,25 @@ ocr-comparison-benchmark/
 
 각 행은 하나의 테스트 이미지와 그에 대한 OCR 결과를 나타냅니다:
 
-| 열 이름              | 의미                                           |
-|---------------------|----------------------------------------------|
-| `Image`             | 이미지 파일 이름                               |
-| `Lang`              | 언어 코드: `eng`, `kor`, `vie`                |
-| `Tesseract_Acc`     | Tesseract의 정확도 (%)                         |
-| `Tesseract_Sec`     | Tesseract 처리 시간 (초)                        |
-| `Tesseract_Output`  | Tesseract의 원시 OCR 텍스트                    |
-| `EasyOCR_Acc`       | EasyOCR의 정확도 (%)                           |
-| `EasyOCR_Sec`       | EasyOCR 처리 시간 (초)                          |
-| `EasyOCR_Output`    | EasyOCR의 원시 OCR 텍스트                      |
-| `PaddleOCR_Acc`     | PaddleOCR의 정확도 (%)                         |
-| `PaddleOCR_Sec`     | PaddleOCR 처리 시간 (초)                        |
-| `PaddleOCR_Output`  | PaddleOCR의 원시 OCR 텍스트                    |
-
----
-
-## 📄 예시 해석
-
-- Tesseract: 영어, 한국어, 베트남어 타이핑된 텍스트에서 높은 정확도와 빠른 속도를 보여줌. 손글씨는 여전히 어려움.
-- EasyOCR: 타이핑된 텍스트에서 좋은 성능. 손글씨는 세 언어 모두에서 여전히 어려움. 특히 한국어에서 다른 엔진보다 좋은 성능.
-- PaddleOCR: 타이핑과 손글씨 모두에서 추출 성능이 낮음.
+| 열 이름             | 의미                                      |
+|--------------------|-------------------------------------------|
+| `Image`            | 이미지 파일 이름                           |
+| `Lang`             | 언어 코드: `eng`, `kor`, `vie`            |
+| `Tesseract_Acc`    | Tesseract 정확도 (%)                      |
+| `Tesseract_Sec`    | Tesseract 처리 시간 (초)                   |
+| `Tesseract_Output` | Tesseract 출력 텍스트                     |
+| `EasyOCR_Acc`      | EasyOCR 정확도 (%)                        |
+| `EasyOCR_Sec`      | EasyOCR 처리 시간 (초)                    |
+| `EasyOCR_Output`   | EasyOCR 출력 텍스트                       |
+| `PaddleOCR_Acc`    | PaddleOCR 정확도 (%)                      |
+| `PaddleOCR_Sec`    | PaddleOCR 처리 시간 (초)                  |
+| `PaddleOCR_Output` | PaddleOCR 출력 텍스트                     |
+| `Doctr_Acc`        | Doctr 정확도 (%)                          |
+| `Doctr_Sec`        | Doctr 처리 시간 (초)                      |
+| `Doctr_Output`     | Doctr 출력 텍스트                         |
+| `TrOCR_Acc`        | TrOCR 정확도 (%)                          |
+| `TrOCR_Sec`        | TrOCR 처리 시간 (초)                      |
+| `TrOCR_Output`     | TrOCR 출력 텍스트                         |
 
 ---
 
@@ -114,7 +114,7 @@ ocr-comparison-benchmark/
 
 # 🧠 OCR Benchmark: Tesseract vs EasyOCR vs PaddleOCR
 
-This project benchmarks three OCR libraries: **Tesseract**, **EasyOCR**, and **PaddleOCR** across three languages (**English**, **Korean**, **Vietnamese**) and two input types (**typed** and **handwritten**).
+This project benchmarks five OCR libraries: **Tesseract**, **EasyOCR**, **PaddleOCR**, **Doctr**, **TrOCR** across three languages (**English**, **Korean**, **Vietnamese**) and two input types (**typed** and **handwritten**).
 
 ---
 
@@ -136,7 +136,7 @@ The goal of this project is to evaluate and compare OCR performance using the fo
 Install required Python packages:
 
 ```bash
-pip install pytesseract easyocr paddleocr opencv-python pandas tabulate
+pip install pytesseract easyocr paddleocr doctr transformers opencv-python pandas tabulate
 ```
 
 Also install Tesseract OCR manually:
@@ -156,11 +156,11 @@ pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tessera
 ### 📋 File Structure
 
 ```
-ocr-comparison-benchmark/
+ocr/
 ├── images/                  # Input test images
-├── ocr_results_final_2.csv  # Output results
-├── ocr_test_final_2.py      # Main benchmarking script
-└── README.md                # This documentation file
+├── ocr_results_all.csv  # Output results
+├── ocr_test_final_4.py      # Main benchmark script
+└── README.md                # This file
 ```
 
 ### 🔄 How It Works
@@ -175,6 +175,8 @@ ocr-comparison-benchmark/
    - Tesseract via `pytesseract`
    - EasyOCR via `easyocr.Reader`
    - PaddleOCR via `PaddleOCR`
+   - Doctr via `doctr.models.ocr_predictor`
+   - TrOCR via `HuggingFace models`
 
 3. **Evaluation**:
 
@@ -183,7 +185,7 @@ ocr-comparison-benchmark/
 
 4. **Output**:
 
-   - Saves results into `ocr_results_final_2.csv`.
+   - Saves results into `ocr_results_all.csv`.
    - Optionally prints result table via `tabulate` (if installed).
 
 ---
@@ -205,14 +207,13 @@ Each row in the CSV represents one test image and its OCR results:
 | `PaddleOCR_Acc`    | Accuracy (%) from PaddleOCR            |
 | `PaddleOCR_Sec`    | Execution time for PaddleOCR           |
 | `PaddleOCR_Output` | Raw OCR text by PaddleOCR              |
+| `Doctr_Acc`    | Accuracy (%) from Doctr            |
+| `Doctr_Sec`    | Execution time for Doctr           |
+| `Doctr_Output` | Raw OCR text by Doctr              |
+| `TrOCR_Acc`    | Accuracy (%) from TrOCR            |
+| `TrOCR_Sec`    | Execution time for TrOCR           |
+| `TrOCR_Output` | Raw OCR text by TrOCR              |
 
----
-
-## 📄 Sample Interpretations (from CSV)
-
-  - Tesseract: achieved higher accuracy and faster speed than the others for typed English, Korean and Vietnamese. Handwritten in three languages is still a challenge.
-  - EasyOCR: performed well in typed writing. Handwritten in three languages is still a challenge. Surprisingly, performed quite well in Korean, compared to Tesseract and PaddleOCR.
-  - PaddleOCR: failed to extract properly in both typed and handwritten writing.
     
 ---
 
