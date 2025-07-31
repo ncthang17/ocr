@@ -1,4 +1,4 @@
-# 🧠 OCR 벤치마크: Tesseract vs EasyOCR vs PaddleOCR
+# 🧠 OCR 벤치마크: Tesseract vs EasyOCR vs PaddleOCR vs Doctr vs TrOCR
 
 이 프로젝트는 다섯 가지 OCR 라이브러리인 **Tesseract**, **EasyOCR**, **PaddleOCR**, **Doctr**, **TrOCR**를 **영어**, **한국어**, **베트남어** 세 언어와 **타이핑** 및 **손글씨** 두 가지 입력 유형에서 벤치마크합니다.
 
